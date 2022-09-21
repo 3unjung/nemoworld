@@ -1,0 +1,132 @@
+DROP DATABASE IF EXISTS village_green;
+CREATE DATABASE village_green;
+USE village_green;
+CREATE TABLE fournisseur(
+   fou_id INT AUTO_INCREMENT,
+   fou_nom VARCHAR(50)  NOT NULL,
+   fou_adress VARCHAR(50)  NOT NULL,
+   fou_codePostal VARCHAR(5)  NOT NULL,
+   fou_ville VARCHAR(50)  NOT NULL,
+   fou_reference VARCHAR(50)  NOT NULL,
+   fou_telephone VARCHAR(10) ,
+   fou_email VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(fou_id)
+);
+
+CREATE TABLE commande(
+   cmde_id INT AUTO_INCREMENT,
+   cmde_reglement VARCHAR(50)  NOT NULL,
+   cmde_numero VARCHAR(50)  NOT NULL,
+   cmde_totalHt DECIMAL(15,2)   NOT NULL,
+   cmde_tva INT NOT NULL,
+   cmde_reduction INT NOT NULL,
+   cmde_total DECIMAL(15,2)   NOT NULL,
+   cmde_totalTtc DECIMAL(15,2)   NOT NULL,
+   cmde_date DATE NOT NULL,
+   cmde_adresse_livraison VARCHAR(50)  NOT NULL,
+   cmde_codePostal_livraison VARCHAR(5)  NOT NULL,
+   cmde_ville_livraison VARCHAR(50)  NOT NULL,
+   cmde_adresse_facturation VARCHAR(50)  NOT NULL,
+   cmde_codePostal_facturation VARCHAR(50)  NOT NULL,
+   cmde_ville_facturation VARCHAR(50)  NOT NULL,
+   cmde_facture_numero VARCHAR(50)  NOT NULL,
+   cmde_facture_date DATE,
+   cmde_quantite_pro VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(cmde_id),
+   UNIQUE(cmde_numero)
+);
+
+CREATE TABLE livraison(
+   liv_id INT AUTO_INCREMENT,
+   liv_numero VARCHAR(50)  NOT NULL,
+   liv_date DATE NOT NULL,
+   cmde_id INT NOT NULL,
+   PRIMARY KEY(liv_id),
+   FOREIGN KEY(cmde_id) REFERENCES commande(cmde_id)
+);
+
+CREATE TABLE ssRubrique(
+   ssrub_id INT AUTO_INCREMENT,
+   ssRub_nom VARCHAR(50)  NOT NULL,
+   ssrub_id_1 INT NOT NULL,
+   PRIMARY KEY(ssrub_id),
+   FOREIGN KEY(ssrub_id_1) REFERENCES ssRubrique(ssrub_id)
+);
+
+CREATE TABLE commercial(
+   cocial_id INT AUTO_INCREMENT,
+   cocial_nom VARCHAR(50)  NOT NULL,
+   cocial_prenom VARCHAR(50)  NOT NULL,
+   cocial_telephone VARCHAR(10)  NOT NULL,
+   cocial_email VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(cocial_id)
+);
+
+CREATE TABLE produit(
+   pro_id INT AUTO_INCREMENT,
+   pro_nom VARCHAR(50)  NOT NULL,
+   pro_description VARCHAR(50)  NOT NULL,
+   pro_prix DECIMAL(15,2)   NOT NULL,
+   pro_active BOOLEAN NOT NULL,
+   pro_stock INT NOT NULL,
+   pro_coef DECIMAL(15,2)   NOT NULL,
+   pro_reference VARCHAR(50)  NOT NULL,
+   pro_photo VARCHAR(50) ,
+   fou_id INT NOT NULL,
+   PRIMARY KEY(pro_id),
+   FOREIGN KEY(fou_id) REFERENCES fournisseur(fou_id)
+);
+
+CREATE TABLE client(
+   cli_id INT AUTO_INCREMENT,
+   cli_nom VARCHAR(50)  NOT NULL,
+   cli_prenom VARCHAR(50)  NOT NULL,
+   cli_numero VARCHAR(50)  NOT NULL,
+   cli_adress VARCHAR(50)  NOT NULL,
+   cli_codePostal VARCHAR(50)  NOT NULL,
+   cli_ville VARCHAR(50)  NOT NULL,
+   cli_email VARCHAR(50)  NOT NULL,
+   cli_telephone VARCHAR(10)  NOT NULL,
+   cli_type VARCHAR(50)  NOT NULL,
+   cli_coefficient VARCHAR(50)  NOT NULL,
+   N_siret CHAR(15) ,
+   cli_password VARCHAR(50)  NOT NULL,
+   cocial_id INT NOT NULL,
+   PRIMARY KEY(cli_id),
+   UNIQUE(cli_numero),
+   UNIQUE(cli_email),
+   UNIQUE(N_siret),
+   FOREIGN KEY(cocial_id) REFERENCES commercial(cocial_id)
+);
+
+CREATE TABLE passe(
+   cmde_id INT,
+   cli_id INT,
+   PRIMARY KEY(cmde_id, cli_id),
+   FOREIGN KEY(cmde_id) REFERENCES commande(cmde_id),
+   FOREIGN KEY(cli_id) REFERENCES client(cli_id)
+);
+
+CREATE TABLE compose(
+   pro_id INT,
+   cmde_id INT,
+   PRIMARY KEY(pro_id, cmde_id),
+   FOREIGN KEY(pro_id) REFERENCES produit(pro_id),
+   FOREIGN KEY(cmde_id) REFERENCES commande(cmde_id)
+);
+
+CREATE TABLE appartenir(
+   pro_id INT,
+   ssrub_id INT,
+   PRIMARY KEY(pro_id, ssrub_id),
+   FOREIGN KEY(pro_id) REFERENCES produit(pro_id),
+   FOREIGN KEY(ssrub_id) REFERENCES ssRubrique(ssrub_id)
+);
+
+CREATE TABLE passe2(
+   cmde_id INT,
+   cocial_id INT,
+   PRIMARY KEY(cmde_id, cocial_id),
+   FOREIGN KEY(cmde_id) REFERENCES commande(cmde_id),
+   FOREIGN KEY(cocial_id) REFERENCES commercial(cocial_id)
+);

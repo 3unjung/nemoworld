@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<a href="{% url 'homepage' %}">Home Page</a>
+
+{% for order in orders %}
+
+    <h2>{{ order.product.name }}</h2>
+    <img src="{{ order.product.thumbnail.url }}" alt="{{ order.product.name }}">
+    <p>{{ order.quantity }} in cart</p>
+{% endfor %}
+
+<a href="{% url 'delete_cart' %}">Drop my cart</a>
+{% endblock %}
