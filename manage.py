@@ -3,6 +3,7 @@
 import os
 import sys
 
+# alias pm="python manage.py"
 
 def main():
     """Run administrative tasks."""

@@ -2,18 +2,22 @@
 
 {% block content %}
 
+<div class="row">
+    <div mb-4>
+        <h2>{{ product.name }}</h2>
+        <h3>Price HT: {{ product.price }}&€</h3>
+        <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}">
+        <p>Description: {{ product.description }}</p>
+        <p>Quantity available: {{ product.quantity }} in stock</p>
 
-    <h2>{{ product.name }}</h2>
-    <h3>Price HT: {{ product.price }}&€</h3>
-    <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}">
-    <p>Description: {{ product.description }}</p>
-    <p>Quantity available: {{ product.quantity }} in stock</p>
 
-
-    {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
 
         <p><a href="{% url 'add-to-cart' product.slug %}">Add to cart</a></p>
-    {% endif %}
+        {% endif %}
 
-<a href="{% url 'homepage' %}">Home Page</a>
+        <a href="{% url 'homepage' %}">Home Page</a>
+    </div>
+</div>
+
 {% endblock %}

@@ -12,8 +12,12 @@ def signup(request):
         # traitement du formulaire
         username = request.POST.get("username")
         password = request.POST.get("password")
-        user = User.objects.create_user(username=username, password=password)
-
+        firstname = request.POST.get("firstname")
+        lastname = request.POST.get("lastname")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        user = User.objects.create_user(username=username, password=password, first_name=firstname, last_name=lastname,
+                                        email=email)
         login(request, user)
         return redirect("homepage")
 
@@ -25,13 +29,13 @@ def login_user(request):
         # connexion
         username = request.POST.get("username")
         password = request.POST.get("password")
+        print(f"============================= {username}, {password}")
 
         # vérifier si les informations envoyées correspondent
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
             return redirect("homepage")
-
 
     return render(request, 'accounts/login.html')
 

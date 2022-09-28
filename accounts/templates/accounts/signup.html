@@ -1,21 +1,179 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Sig in</h1>
-<form method="POST" action="">
-    {% csrf_token %}
-    <p>
-        <label for="username">Username</label>
-        <input id="username" type="text" name="username">
-    </p>
 
-    <p>
-        <label for="password">Password</label>
-        <input id="password" type="password" type="password" name="password">
-    </p>
+<!--<div class="center-form">
+    <h1 class="text-center">Sig in</h1><br>
 
-    <button type="submit">Register new account</button>
+    <di class="d-flex">
 
-</form>
+        <div class="col-6">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="justify-content-center text-center">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" aria-describedby="username"
+                               placeholder="Quinella Itezed" name="username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="password"
+                               name="password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" class="form-control" id="firstname" placeholder="margaux" name="firstname">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname">lastname</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="acloque" name="lastname">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">eMail</label>
+                        <input type="email" class="form-control" id="email" placeholder="address@mail.com" name="email">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Register new account</button>
+                <a href="#" class="btn bg-primary">Already Sign up</a>
+            </form>
+        </div>
+
+        <div class="col-6">
+            <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi consequatur deleniti exercitationem id in iste iure minima nihil non, nulla possimus quae quidem quos rem repudiandae sed ullam ut?</span><span>Architecto consequuntur culpa cupiditate dignissimos laudantium maxime, numquam odio officiis provident sed totam veniam voluptates! Ab aperiam debitis dolore fugit incidunt ipsum nesciunt non, quae saepe? Amet dolores ut vero.</span><span>Accusantium aliquam aperiam assumenda aut doloribus impedit maiores minima molestiae non odio porro quia quis rerum suscipit tempora temporibus, unde? Atque eligendi facere, impedit maiores nihil quasi qui reiciendis voluptatibus.</span><span>Aperiam magnam, officia. Accusantium culpa earum et ipsa ipsum laborum libero perspiciatis praesentium provident similique, vero voluptas voluptatem voluptatibus! Accusamus doloribus exercitationem illum impedit laborum nihil ratione repudiandae voluptas voluptatibus.</span><span>Aperiam blanditiis, cumque deleniti dolorum ducimus, eos fuga incidunt iure maiores, natus odio quasi qui repellendus saepe similique sit veniam. Deserunt doloribus eligendi esse est nostrum praesentium, qui suscipit veniam?</span><span>A, accusamus eveniet maxime nam necessitatibus neque qui quod, rem reprehenderit soluta tempore tenetur voluptatem. A doloremque, est ex exercitationem, in iure labore libero, nemo nesciunt sequi soluta temporibus ullam.</span><span>Autem consequuntur dolorem earum illum impedit ipsa, molestiae nisi quo quod repellat? Aliquam consequatur deserunt fugiat illo ipsam nemo sed. Accusantium atque consequatur cupiditate dicta ducimus nesciunt porro rerum totam.</span><span>Adipisci alias aliquid aspernatur aut autem consequuntur delectus doloribus et eveniet facilis incidunt ipsum iste laudantium magni minima minus mollitia nihil odio pariatur quisquam quo recusandae, repellat sit unde velit!</span><span>Animi beatae cumque in laborum nostrum nulla perferendis, quam quos reiciendis repudiandae saepe suscipit tempora tempore tenetur voluptas. Ea facilis fugit inventore ipsam minus nisi nulla, perspiciatis unde vero voluptates?</span><span>Adipisci assumenda cumque enim facilis itaque placeat quia sapiente sint sunt suscipit? A amet assumenda aut dignissimos enim error eum itaque laborum minima modi nesciunt nobis provident qui repellat, sapiente?</span><span>Aspernatur consequatur inventore quod. Ab alias aliquam asperiores autem consectetur dignissimos eius exercitationem fuga illum ipsam iusto nam, nesciunt odio optio praesentium quas quos ratione rem repudiandae, vitae voluptate voluptatibus!</span><span>Adipisci asperiores cum, dignissimos, doloremque ea id impedit laudantium modi nulla optio porro quam quis sequi sunt voluptas! A accusantium aliquam beatae laudantium magnam modi officiis omnis placeat quis sit.</span><span>Atque expedita molestias neque nihil nisi tempora veritatis. A consectetur, cum cupiditate distinctio dolorem doloremque itaque labore natus obcaecati odio quisquam, quod? Cum fuga magnam odio soluta. Delectus, expedita, totam.</span><span>Ad debitis dignissimos et excepturi facere, harum inventore nesciunt voluptatum. Accusantium deleniti, distinctio, eius eligendi eos, ex iste iusto natus nesciunt nihil non perspiciatis quam quia tempora velit veniam voluptatem.</span><span>A culpa dolor esse maxime provident, rem repellendus vel vitae voluptatum! Accusantium adipisci amet autem dolores, eos inventore laudantium maxime, nisi numquam perferendis quaerat quasi repudiandae tempore voluptas voluptates. Nisi?</span><span>Accusamus accusantium at laboriosam maiores maxime quae quibusdam repellat voluptatibus. Ab atque aut consequatur corporis cum deleniti eligendi eos id labore, nam perferendis quaerat, ratione reprehenderit, repudiandae similique tenetur vero.</span><span>Amet, quos, recusandae. A asperiores assumenda atque aut commodi culpa delectus dicta distinctio doloremque eveniet explicabo fugit hic, iure nesciunt nihil, numquam, perferendis qui quis ratione sint soluta tempora ullam.</span><span>Inventore neque quidem quo saepe, tempora veritatis voluptatem. Delectus eum itaque nostrum saepe. Est fuga odio repellat rerum soluta! Accusantium, aliquam illo ipsa itaque laborum qui quidem ratione reprehenderit sint.</span><span>Ab alias amet assumenda atque cumque cupiditate deleniti dicta distinctio dolorem doloribus esse iste magni, maxime mollitia nemo odit omnis quasi quibusdam quod rem reprehenderit sequi totam vitae voluptas voluptate.</span><span>Ea earum hic quia recusandae rem, repellat suscipit tempora! Culpa eius exercitationem expedita harum maiores quia ratione recusandae sed voluptate. Dignissimos dolorum, ea error expedita nemo nihil quae quasi tempora.</span>
+            </p>
+        </div>
+    </di>
+
+
+</div>
+</div>
+</form>-->
+
+<div class="container">
+    <div class="row py-5 mt-4 align-items-center">
+        <!-- For Demo Purpose -->
+        <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+            {% load static %}
+            <img src="{% static 'poisson/img/ayezconfiance.png' %}" alt=":o"
+                 class="telephone img-fluid mb-3 d-none d-md-block">
+            <h1 class="abysse">Guarantee the security of your personal data with own services</h1>
+            <p class="font-italic text-muted">More about <a  href="https://bootstrapious.com" class="text-muted">
+                <u id="dontcustome">Your Datas</u></a>
+            </p>
+        </div>
+
+        <!-- Registeration Form -->
+        <div class="col-md-7 col-lg-6 ml-auto">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+
+                    <!-- First Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="firstName" type="text" name="firstname" placeholder="First Name"
+                               class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="username" type="text" name="username" placeholder="Username"
+                               class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="lastName" type="text" name="lastname" placeholder="Last Name"
+                               class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-envelope text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="email" type="email" name="email" placeholder="Email Address"
+                               class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="input-group col-lg-12 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-phone-square text-muted"></i>
+                            </span>
+                        </div>
+                        <!--<select id="countryCode" name="countryCode" style="max-width: 80px"
+                                class="custom-select form-control bg-white border-left-0 border-md h-100 font-weight-bold text-muted">
+                            <option value="">+12</option>
+                            <option value="">+10</option>
+                            <option value="">+15</option>
+                            <option value="">+18</option>
+                        </select>-->
+
+                        <input id="phoneNumber" type="tel" name="phone" placeholder="Phone Number"
+                               class="form-control bg-white border-md border-left-0 pl-3">
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-lock text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="password" type="password" name="password" placeholder="Password"
+                               class="form-control bg-white border-left-0 border-md">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="go-go form-group col-lg-12 mx-auto mb-0">
+                        <button type="submit" class="btn betatest">Register my account</button>
+                        <span>When clicked I consent to share my datas</span>
+                    </div>
+
+                    <!-- Divider Text -->
+                    <div class="form-group col-lg-12 mx-auto d-flex align-items-center my-4">
+                        <div class="border-bottom w-100 ml-5"></div>
+                        <span class="px-2 small text-muted font-weight-bold text-muted">OR</span>
+                        <div class="border-bottom w-100 mr-5"></div>
+                    </div>
+
+                    <!-- Have an account -->
+                    <div class=" go-go form-group col-lg-12 mx-auto">
+                            <a class="btn go-go" href="{% url 'login' %}">Already Register</a></button>
+                            <span class="font-weight-bold">Loggin to your account</span>
+
+                        </a>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

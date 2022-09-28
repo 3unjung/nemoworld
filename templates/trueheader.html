@@ -1,0 +1,79 @@
+<div class="header-header">
+
+    <nav class="navbar navbar-expand-lg navbar-light abyss-bg">
+        <a id="world" class="navbar-brand" href="{% url 'homepage' %}"><span id="clickmelogo"><em>NEMO</em></span>World</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="d-flex  collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About us</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <div class="d-flex">
+                    <a class="nav-link" href="#"> Login to <span>{{ user.username }}</span></a>
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+
+                </div>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'signup' %}">Sig up</a>
+
+                </li>
+
+                <li>
+                    <a href="#" data-toggle="dropdown"
+                       class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Login</a>
+
+                    <ul class="dropdown-menu form-wrapper navbar-right">
+                        <li>
+                            <form method="POST">
+                                {% csrf_token %}
+
+                                <p class="hint-text">Fill in this form to create your account!</p>
+                                <div class="form-group">
+                                    <input type="text" id="username" type="text" name="username" class="form-control"
+                                           placeholder="Username" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <input id="password" type="password" name="password" class="form-control"
+                                           placeholder="Password"
+                                           required="required">
+                                </div>
+                                <button type="submit">Log In !</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+
+            </ul>
+
+        </div>
+    </nav>
+</div>

@@ -4,4 +4,5 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Customer(AbstractUser):
-    name = models.CharField(max_length=150)
+    # name = models.CharField(max_length=150)
+    pass

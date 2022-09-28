@@ -1,14 +1,36 @@
 {% extends "base.html"  %}
-
 {% block content %}
-<p>success</p>
+<style>
+    body {
+    background: url("/static/poisson/img/fish-31.gif");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-position-x: center;
+     background-position-position-y: top;
+     background-size: cover;
+    background-attachment: fixed;
+    }
+</style>
 
-{% for product in products %}
-<h2>{{ product.name }}</h2>
-<img style="width: 50px;" src="{{ product.thumbnail.url }}" alt="{{ product.name }}">
+<div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100 shadow-sm" style="background-color: rgba(35,137,218,0.5)"><img
+                    src="{{ product.thumbnail.url }}"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div class="clearfix mb-3"><span
+                            class="float-start badge rounded-pill bg-primary">{{ product.name }}</span> <span
+                            class="float-end price-hp">{{ product.price }}&euro;</span></div>
+                    <h5 class="card-title">{{ product.description }}</h5>
+                    <div class="text-center my-4"><a href="{% url 'add-to-cart' product.slug %}" class="btn btn-warning">Add to cart</a></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
-<a href="{{ product.get_absolute_url }}">View product</a>
-
-{% endfor %}
 
 {% endblock %}
