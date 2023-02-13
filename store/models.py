@@ -22,7 +22,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=100)
+    species = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
     price = models.FloatField(default=0.0)
     quantity = models.IntegerField(default=0)
@@ -32,7 +32,7 @@ class Product(models.Model):
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.name}, ({self.quantity})"
+        return f"{self.species}, ({self.quantity})"
 
     def get_absolute_url(self):
         return reverse("product", kwargs={"slug": self.slug})
@@ -47,7 +47,7 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return f"{self.product.name} ({self.quantity})"
+        return f"{self.product.species} ({self.quantity})"
 
 
 class Cart(models.Model):

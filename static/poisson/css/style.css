@@ -11,7 +11,11 @@
     --orange: #F0604D;
     --saumon: #FBBFB8;
     --jsp: #043775;
+}
 
+/* remove this fucking bullet ahead links */
+li {
+    list-style-type: none;
 }
 
 .aliceblue {
@@ -70,10 +74,6 @@
 
 #createyouracc {
     background-color: rgb(var(--abyss));
-}
-
-.main {
-    background-color: rgba(240,248,255, 0.7);
 }
 
 .go-go > button, button:active, button:hover {
@@ -199,7 +199,6 @@ select.form-control {
 	.navbar {
 		padding-left: 16px;
 		padding-right: 16px;
-		border-bottom: 1px solid #dfe3e8;
 		border-radius: 0;
 		font-size: 20px;
 		font-weight: 500;
@@ -326,6 +325,7 @@ select.form-control {
 		margin-bottom: 15px;
 		font-size: 13px;
 	}
+
 	.navbar .form-wrapper .social-btn .btn, .navbar .form-wrapper .social-btn .btn:hover {
 		color: #fff;
         margin: 0;

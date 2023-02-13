@@ -15,19 +15,23 @@
                     <a class="nav-link" href="#">About us</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Category
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'categories' %}">Category</a>
                 </li>
+
+                <!-- <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                         Category
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                         <a class="dropdown-item" href="#">Action</a>
+                         <a class="dropdown-item" href="#">Another action</a>
+                         <div class="dropdown-divider"></div>
+                         <a class="dropdown-item" href="#">Something else here</a>
+                     </div>
+                 </li>-->
 
             </ul>
 
@@ -55,7 +59,7 @@
                             <form method="POST">
                                 {% csrf_token %}
 
-                                <p class="hint-text">Fill in this form to create your account!</p>
+                                <p class="hint-text">Fill this form to log in !</p>
                                 <div class="form-group">
                                     <input type="text" id="username" type="text" name="username" class="form-control"
                                            placeholder="Username" required="required">
@@ -65,7 +69,11 @@
                                            placeholder="Password"
                                            required="required">
                                 </div>
-                                <button type="submit">Log In !</button>
+                                <button type="submit" class="btn bg-info" style="color: black;">Log In !</button>
+                                or
+                                <button class="btn bg-secondary"><a style="color: white;text-decoration: none;"
+                                                                    href="{% url 'signup' %}">Register</a></button>
+
                             </form>
                         </li>
                     </ul>
@@ -73,6 +81,56 @@
                 {% endif %}
 
             </ul>
+
+            <!--  <div class="block-card">
+
+                  {% if user.cart %}
+                  <li class="nav-item">
+                      <p><a class="nav-link" href="{% url 'cart' %}"> <i class="fa-solid fa-cart-shopping"></i>
+                          My cart (quantity : {{ user.cart.orders.count }})</a></p>
+                      <p style="text-align: center;"><a style="color: red;" href="{% url 'delete_cart' %}">Delete my
+                          cart</a></p>
+                  </li>
+                  {% endif %}
+              </div>-->
+
+            <style>
+                .alacaisse{
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 10px;
+                    margin-top: 5px;
+                }
+
+                .block-cart{
+                    background-color: rgba(235,242,250,0.2);
+                    display: flex;
+                }
+
+                .block-cart i{
+                    color: orange;
+                }
+
+
+
+            </style>
+
+            {% if user.is_authenticated %}
+
+            <div class="d-flex block-cart">
+                <ul>
+                    <li class="nav-item anti-bullet">
+                        <a class="nav-link" href="{% url 'cart' %}"><span><i
+                                class="fa-solid fa-cart-shopping"></i></span> My cart</a>
+                    </li>
+                </ul>
+
+                <div class="alacaisse">
+                    <small>Price quantity</small>
+                </div>
+            </div>
+
+            {% endif %}
 
         </div>
     </nav>

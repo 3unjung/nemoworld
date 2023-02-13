@@ -39,7 +39,8 @@ def save_random_fish_skiffybot(filename):
     img_bytes = requests.get(img_url_json["message"]).content
     image = Image.open(io.BytesIO(img_bytes))
     # download the images
-    image.save(f"/home/quinella/Dropbox/poisson/media/photos/{filename}")
+    # image.save(f"/home/quinella/Dropbox/poisson/media/photos/{filename}")
+    image.save(f"D:\Dropbox\poisson\media\photos\{filename}")
 
 
 class Provider(faker.providers.BaseProvider):
@@ -72,14 +73,14 @@ class Command(BaseCommand):
             name = fake.unique.ecommerce_products()
             slug = name
             price = random.randint(1, 999)
-            description = fake.text(max_nb_chars=20)
+            description = fake.text(max_nb_chars=200)
             category_name = fake.ecommerce_category()
             category = Category.objects.create(name=category_name, slug=category_name)
             img_filename = fake.file_name(extension='png')
             save_random_fish_skiffybot(img_filename)
 
             # manage and persist
-            Product.objects.create(name=name, slug=slug, price=price, description=description,
+            Product.objects.create(species=name, slug=slug, price=price, description=description,
                                    category=category, thumbnail=f"photos/{img_filename}")
 
         check_category = Product.objects.all().count()
